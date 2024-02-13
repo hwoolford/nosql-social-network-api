@@ -14,21 +14,21 @@ const userSchema = new Schema(
             unique: true,
             validate: {
                 validator: function (value) {
-                  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                  return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.])$/.test(value);
                 },
                 message: 'Invalid email address format',
-              },  // code from https://blog.bounceless.io/mastering-email-validation-in-mongoose-syntax-uniqueness-and-beyond/
+              },  
         },
         thoughts: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'thought',
+                ref: 'Thought',
             },
         ],
         friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'user'
+                ref: 'User'
             },
         ],
     },
