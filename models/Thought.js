@@ -10,7 +10,13 @@ const thoughtSchema = new Schema(
             min_length: 1,
             max_length: 280,
         },
-        createdAt: { type: Date, default: Date.now },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: function (timestamp) {
+                return timestamp.toISOString();
+            }
+        },
         username: { type: String, required: true },
         reactions: [reactionSchema],
     },
@@ -18,6 +24,7 @@ const thoughtSchema = new Schema(
         toJSON: {
             getters: true,
         },
+        id: false, 
     } 
 );
 
