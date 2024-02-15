@@ -31,7 +31,6 @@ module.exports = {
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
-            res.json(thought);
 
             const user = await User.updateOne(
                 { _id: req.params.userId },
@@ -42,7 +41,7 @@ module.exports = {
             if (!user) {
                 return res.status(404).json({ message: 'No user found with that ID' });
             }
-            res.json(user);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }

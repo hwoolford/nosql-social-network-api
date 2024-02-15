@@ -12,7 +12,13 @@ const reactionSchema = new Schema(
             max_length: 280,
         },
         username: { type: String, required: true},
-        createdAt: { type: Date, default: Date.now },
+        createdAt: {
+            type: Date,
+            default: Date.now ,
+            get: function (timestamp) {
+                return timestamp.toISOString();
+            }
+        },
     },
     {
         toJSON: {

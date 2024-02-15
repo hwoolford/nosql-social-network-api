@@ -14,7 +14,7 @@ const userSchema = new Schema(
             unique: true,
             validate: {
                 validator: function (value) {
-                  return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.])$/.test(value);
+                  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
                 },
                 message: 'Invalid email address format',
               },  
