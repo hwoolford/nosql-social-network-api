@@ -15,17 +15,17 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now ,
-            get: function (timestamp) {
-                return timestamp.toISOString();
-            }
+            // get: function (timestamp) {
+            //     return timestamp.toISOString();
+            // }
         },
     },
-    {
-        toJSON: {
-            getters: true,
-        },
-        id: false, 
-    }
+    // {
+    //     toJSON: {
+    //         getters: true,
+    //     },
+    //     id: false, 
+    // }
 );
 
 module.exports = reactionSchema;
