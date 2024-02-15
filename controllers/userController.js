@@ -9,7 +9,7 @@ module.exports = {
         .select("-__v");
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -25,7 +25,7 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -36,7 +36,7 @@ module.exports = {
       res.json(user);
     } catch (err) {
       console.log(err);
-      return res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -54,7 +54,7 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -70,7 +70,7 @@ module.exports = {
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
       res.json({ message: "User and thoughts deleted" });
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -91,7 +91,7 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 
@@ -109,7 +109,7 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ error: err.message });
     }
   },
 };

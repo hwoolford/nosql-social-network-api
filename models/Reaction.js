@@ -14,18 +14,20 @@ const reactionSchema = new Schema(
         username: { type: String, required: true},
         createdAt: {
             type: Date,
-            default: Date.now ,
-            // get: function (timestamp) {
-            //     return timestamp.toISOString();
-            // }
+            default: Date.now,
         },
     },
-    // {
-    //     toJSON: {
-    //         getters: true,
-    //     },
-    //     id: false, 
-    // }
+    {
+        toJSON: {
+            getters: true,
+            virtuals: true,
+        },
+        id: false, 
+    }
 );
+
+reactionSchema.virtual('formattedTimestamp').get(function() {
+    return this.createdAt.toLocaleString();
+});
 
 module.exports = reactionSchema;

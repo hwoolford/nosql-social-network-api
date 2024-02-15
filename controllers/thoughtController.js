@@ -5,10 +5,10 @@ module.exports = {
     async getThoughts(req, res) {
         try {
             const thought = await Thought.find()
-            .select("-__v");
+            .select("-__v")
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 
@@ -23,7 +23,7 @@ module.exports = {
             }
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 
@@ -34,7 +34,7 @@ module.exports = {
 
             const user = await User.updateOne(
                 { _id: req.params.userId },
-                { $push: { thoughts: req.body } },
+                { $push: { thoughts: thought._id } },
                 { runValidators: true, new: true }
             );
 
@@ -43,7 +43,7 @@ module.exports = {
             }
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
     // Update a thought
@@ -59,7 +59,7 @@ module.exports = {
             }
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 
@@ -73,7 +73,7 @@ module.exports = {
             }
             console.log('Thought has been deleted');
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 
@@ -94,7 +94,7 @@ module.exports = {
             }
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 
@@ -112,7 +112,7 @@ module.exports = {
             }
             res.json(thought);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({ error: err.message });
         }
     },
 }
