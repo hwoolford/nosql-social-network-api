@@ -46,6 +46,7 @@ module.exports = {
             res.status(500).json({ error: err.message });
         }
     },
+
     // Update a thought
     async updateThought(req, res) {
         try {
@@ -72,6 +73,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No thought found with that ID' });
             }
             console.log('Thought has been deleted');
+            res.json({ message: 'Thought deleted successfully' });
         } catch (err) {
             res.status(500).json({ error: err.message });
         }
@@ -85,7 +87,7 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $addToSet: { reactions: { reactionId: req.params.reactionId } } },
+                { $addToSet: { reactions: req.body } },
                 { runValidators: true, new: true}
             );
 
@@ -103,14 +105,15 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reaction: { reactionId: req.params.reactionId } } },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true}
             );
 
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with that ID' });
             }
-            res.json(thought);
+            console.log('Reaction has been deleted');
+            res.json({ message: 'Reaction deleted successfully' });
         } catch (err) {
             res.status(500).json({ error: err.message });
         }
