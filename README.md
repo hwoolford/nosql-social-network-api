@@ -15,7 +15,7 @@ Since this is a backend web application, you must have node.js installed on your
 
 To initialize the social network web API, type "npm run start" in the command line. Use a program like Insomnia to test your routes.
 
-The images below show sample routes for users in Insomnia:
+The images below show sample routes for users in Insomnia (see the video walkthrough to view all routes):
 
 
 - Sample post route for creating a new user:
