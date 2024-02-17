@@ -33,7 +33,7 @@ module.exports = {
             const thought = await Thought.create(req.body);
 
             const user = await User.updateOne(
-                { _id: req.params.userId },
+                { _id: req.body.userId },
                 { $push: { thoughts: thought._id } },
                 { runValidators: true, new: true }
             );
