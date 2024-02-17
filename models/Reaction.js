@@ -30,6 +30,7 @@ reactionSchema.virtual('formattedTimestamp').get(function() {
     return this.createdAt.toLocaleString();
 });
 
+// Transform option for toJSON to replace createdAt with formattedTimestamp
 reactionSchema.set('toJSON', {
     transform: function(doc, ret) {
         delete ret.createdAt;
