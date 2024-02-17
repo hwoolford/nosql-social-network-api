@@ -54,7 +54,7 @@ The images below show sample routes for users in Insomnia (see the video walkthr
 
 ## Links
 - [GitHub Repository](https://github.com/hwoolford/nosql-social-network-api) 
-- [Walkthrough Video Demonstration]()
+- [Walkthrough Video Demonstration](https://drive.google.com/file/d/1OJdP8F8jnNc6QN3X5KCvc8pqna5XljgJ/view?usp=sharing)
 
 
 ## Acknowledgements
