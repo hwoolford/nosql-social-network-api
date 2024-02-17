@@ -30,4 +30,12 @@ reactionSchema.virtual('formattedTimestamp').get(function() {
     return this.createdAt.toLocaleString();
 });
 
+reactionSchema.set('toJSON', {
+    transform: function(doc, ret) {
+        delete ret.createdAt;
+        ret.formattedTimestamp = doc.formattedTimestamp;
+        return ret;
+    }
+});
+
 module.exports = reactionSchema;

@@ -30,6 +30,15 @@ thoughtSchema.virtual('formattedTimestamp').get(function() {
     return this.createdAt.toLocaleString();
 });
 
+// Transform option for toJSON to replace createdAt with formattedTimestamp
+thoughtSchema.set('toJSON', {
+    transform: function(doc, ret) {
+        delete ret.createdAt;
+        ret.formattedTimestamp = doc.formattedTimestamp;
+        return ret;
+    }
+});
+
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
